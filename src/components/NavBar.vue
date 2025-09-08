@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <button
         class="navbar-toggler"
@@ -15,22 +15,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'home' }"
+            <router-link class="nav-link text-white" :to="{ name: 'home' }"
               >Home</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'ricette' }"
+            <router-link class="nav-link text-white" :to="{ name: 'ricette' }"
               >Ricette</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'profilo' }"
+            <router-link class="nav-link text-white" :to="{ name: 'profilo' }"
               >Profilo</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'editor' }"
+            <router-link class="nav-link text-white" :to="{ name: 'editor' }"
               >Editor</router-link
             >
           </li>

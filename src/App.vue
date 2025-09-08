@@ -6,18 +6,17 @@
 
     <router-view />
 
-    <footer class="footer py-3 bg-dark text-white-50 text-center">
-      <div class="container">
-        <span>Progetto didattico &copy; 2025 &mdash; AutoApp</span>
-      </div>
+    <footer>
+      <FooterApp />
     </footer>
   </div>
 </template>
 
 <script>
+import FooterApp from "./components/FooterApp.vue";
 import NavBar from "./components/NavBar.vue";
 export default {
-  components: { NavBar },
+  components: { NavBar, FooterApp },
 };
 </script>
 

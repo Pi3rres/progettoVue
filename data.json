@@ -1,0 +1,22 @@
+{
+"ricette": [
+    {
+        "id": 1,
+        "nome": "Risotto zucchine e menta",
+        "ingredienti" : "Riso",
+        "preparazione": "cuocere il riso"
+    },
+    {
+        "id": 2,
+        "nome": "Pasta al tonno",
+        "ingredienti" : "Pasta",
+        "preparazione": "cuocere la pasta"
+    },
+    {
+        "id": 3,
+        "nome": "Seuppa",
+        "ingredienti" : "Pane",
+        "preparazione": "cuocere il pane"
+    }
+]
+}

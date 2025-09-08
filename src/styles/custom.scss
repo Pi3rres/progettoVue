@@ -1,0 +1,10 @@
+// Importa le funzioni prima di tutto
+@import "bootstrap/scss/functions";
+
+// Sovrascrivi le variabili
+$primary: #ff5722;
+$secondary: #607d8b;
+$success: #4caf50;
+
+// Importa il resto di Bootstrap
+@import "bootstrap/scss/bootstrap";
