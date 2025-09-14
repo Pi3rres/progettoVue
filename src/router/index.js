@@ -16,9 +16,14 @@ const routes = [
     component: () => import("../views/RecipeView.vue"),
   },
   {
+    path: "/ricetta/:id",
+    name: "recipe-details",
+    component: () => import("../views/RecipeDetails.vue"),
+    props: true,
+  },
+  {
     path: "/profilo",
     name: "profilo",
-
     component: () => import("../views/UserView.vue"),
   },
   {

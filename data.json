@@ -1,22 +1,301 @@
-{
-"ricette": [
+{ "recipes": 
+[
+  {
+    "id": 1,
+    "nome": "Bruschetta al pomodoro",
+    "ingredienti": ["Pane casereccio", "Pomodori maturi", "Aglio", "Olio extravergine d'oliva", "Basilico", "Sale"],
+    "descrizioneBreve": "Un antipasto tipico italiano, semplice e fresco, con pane tostato condito con pomodori, aglio e basilico.",
+    "procedimento": "Tagliare il pane a fette e tostarle su una griglia. Strofinare ogni fetta con uno spicchio d'aglio. Condire i pomodori tagliati a cubetti con olio, sale e basilico tritato. Distribuire i pomodori sulle fette di pane e servire subito.",
+    "preferita": false,
+    "immagine": "bruschetta_pomodoro.png",
+    "categoria": "Antipasti"
+  },
+  {
+    "id": 2,
+    "nome": "Pasta alla carbonara",
+    "ingredienti": ["Spaghetti", "Guanciale", "Uova", "Pecorino romano", "Pepe nero"],
+    "descrizioneBreve": "Un primo piatto romano ricco e cremoso a base di uova, guanciale e pecorino.",
+    "procedimento": "Cuocere gli spaghetti in abbondante acqua salata. Rosolare il guanciale a cubetti in padella. Sbattere le uova con pecorino e pepe. Scolare la pasta e unirla al guanciale. A fuoco spento, aggiungere la crema di uova e mescolare velocemente. Servire caldo.",
+    "preferita": true,
+    "immagine": "carbonara.png",
+    "categoria": "Primi piatti"
+  },
+  {
+    "id": 3,
+    "nome": "Risotto alla milanese",
+    "ingredienti": ["Riso Carnaroli", "Burro", "Cipolla", "Brodo di carne", "Zafferano", "Grana padano"],
+    "descrizioneBreve": "Un risotto cremoso dal tipico colore giallo dato dallo zafferano, simbolo della cucina milanese.",
+    "procedimento": "Far appassire la cipolla tritata nel burro. Aggiungere il riso e tostarlo per qualche minuto. Sfumare con vino bianco e aggiungere gradualmente il brodo caldo. A metà cottura sciogliere lo zafferano nel brodo e unirlo al riso. Mantecare con burro e grana prima di servire.",
+    "preferita": false,
+    "immagine": "risotto_milanese.png",
+    "categoria": "Primi piatti"
+  },
+  {
+    "id": 4,
+    "nome": "Lasagne alla bolognese",
+    "ingredienti": ["Sfoglie di pasta fresca", "Ragù alla bolognese", "Besciamella", "Parmigiano Reggiano"],
+    "descrizioneBreve": "Un piatto tradizionale emiliano, stratificato con ragù, besciamella e formaggio.",
+    "procedimento": "Preparare il ragù con carne macinata, pomodoro, sedano, carota e cipolla. Disporre in una teglia strati di pasta, ragù, besciamella e parmigiano. Ripetere fino a esaurimento ingredienti. Cuocere in forno a 180°C per circa 40 minuti.",
+    "preferita": true,
+    "immagine": "lasagne_bolognese.png",
+    "categoria": "Primi piatti"
+  },
+  {
+    "id": 5,
+    "nome": "Parmigiana di melanzane",
+    "ingredienti": ["Melanzane", "Passata di pomodoro", "Mozzarella", "Parmigiano Reggiano", "Basilico", "Olio"],
+    "descrizioneBreve": "Un ricco piatto a base di melanzane fritte, salsa di pomodoro e formaggio, cotto al forno.",
+    "procedimento": "Tagliare le melanzane a fette, friggerle in olio caldo e scolarle. In una teglia alternare strati di melanzane, salsa di pomodoro, mozzarella e parmigiano. Continuare fino a esaurire gli ingredienti. Cuocere in forno a 180°C per 30-40 minuti.",
+    "preferita": false,
+    "immagine": "parmigiana_melanzane.png",
+    "categoria": "Secondi piatti"
+  },
+  {
+    "id": 6,
+    "nome": "Pizza margherita",
+    "ingredienti": ["Farina", "Acqua", "Lievito", "Sale", "Mozzarella", "Pomodoro", "Basilico"],
+    "descrizioneBreve": "La pizza napoletana più famosa, con pomodoro, mozzarella e basilico.",
+    "procedimento": "Preparare l’impasto con farina, acqua, lievito e sale. Lasciar lievitare almeno 8 ore. Stendere i dischi e condire con pomodoro, mozzarella e basilico. Cuocere in forno a 250°C fino a doratura.",
+    "preferita": true,
+    "immagine": "pizza_margherita.png",
+    "categoria": "Primi piatti"
+  },
+  {
+    "id": 7,
+    "nome": "Ossobuco alla milanese",
+    "ingredienti": ["Ossibuchi di vitello", "Burro", "Cipolla", "Sedano", "Carota", "Brodo", "Vino bianco"],
+    "descrizioneBreve": "Un secondo piatto tipico milanese, cotto lentamente con verdure e vino.",
+    "procedimento": "Infarinare leggermente gli ossibuchi e rosolarli nel burro. Aggiungere cipolla, sedano e carota tritati. Sfumare con vino bianco e cuocere a fuoco lento aggiungendo brodo fino a completa cottura. Servire con gremolata di prezzemolo, aglio e limone.",
+    "preferita": false,
+    "immagine": "ossobuco.png",
+    "categoria": "Secondi piatti"
+  },
+  {
+    "id": 8,
+    "nome": "Tiramisù",
+    "ingredienti": ["Savoiardi", "Mascarpone", "Uova", "Zucchero", "Caffè", "Cacao amaro"],
+    "descrizioneBreve": "Il dolce al cucchiaio italiano più conosciuto al mondo, a base di caffè e mascarpone.",
+    "procedimento": "Preparare una crema con tuorli e zucchero, unire il mascarpone e infine gli albumi montati. Bagnare i savoiardi nel caffè e alternare strati di biscotti e crema in una teglia. Spolverare di cacao e lasciar riposare in frigo almeno 3 ore.",
+    "preferita": true,
+    "immagine": "tiramisu.png",
+    "categoria": "Dolci"
+  },
+  {
+    "id": 9,
+    "nome": "Panna cotta",
+    "ingredienti": ["Panna fresca", "Zucchero", "Colla di pesce", "Vaniglia"],
+    "descrizioneBreve": "Un dolce al cucchiaio morbido e delicato, spesso accompagnato da coulis di frutti di bosco.",
+    "procedimento": "Scaldare la panna con zucchero e vaniglia. Aggiungere la colla di pesce ammollata e mescolare bene. Versare negli stampini e lasciare in frigo per almeno 4 ore. Servire con salsa ai frutti di bosco.",
+    "preferita": false,
+    "immagine": "panna_cotta.png",
+    "categoria": "Dolci"
+  },
+  {
+    "id": 10,
+    "nome": "Arancini di riso",
+    "ingredienti": ["Riso", "Zafferano", "Mozzarella", "Ragù di carne", "Piselli", "Uova", "Pangrattato"],
+    "descrizioneBreve": "Specialità siciliana a base di riso fritto ripieno di ragù e mozzarella.",
+    "procedimento": "Cuocere il riso con zafferano e lasciarlo raffreddare. Formare delle sfere e inserire al centro un cucchiaio di ragù e mozzarella. Passare le sfere in uovo e pangrattato, quindi friggere in olio bollente fino a doratura.",
+    "preferita": false,
+    "immagine": "arancini.png",
+    "categoria": "Antipasti"
+  },
+  {
+    "id": 11,
+    "nome": "Polenta concia",
+    "ingredienti": ["Farina di mais", "Burro", "Fontina", "Parmigiano Reggiano", "Sale"],
+    "descrizioneBreve": "Un piatto tipico delle montagne, a base di polenta arricchita con burro e formaggi.",
+    "procedimento": "Cuocere la polenta in acqua salata mescolando continuamente. A fine cottura aggiungere burro e formaggi a cubetti, mescolare bene fino a ottenere una consistenza cremosa. Servire calda.",
+    "preferita": false,
+    "immagine": "polenta_concia.png",
+    "categoria": "Primi piatti"
+  },
+  {
+    "id": 12,
+    "nome": "Vitello tonnato",
+    "ingredienti": ["Carne di vitello", "Tonno in scatola", "Uova sode", "Capperi", "Maionese"],
+    "descrizioneBreve": "Un antipasto tipico piemontese, a base di fettine di vitello condite con salsa al tonno.",
+    "procedimento": "Lessare il vitello in brodo aromatico e lasciarlo raffreddare. Frullare tonno, uova sode, capperi e maionese per ottenere la salsa. Tagliare la carne a fettine sottili e condirla con la salsa tonnata.",
+    "preferita": false,
+    "immagine": "vitello_tonnato.png",
+    "categoria": "Antipasti"
+  },
+  {
+    "id": 13,
+    "nome": "Cacio e pepe",
+    "ingredienti": ["Spaghetti", "Pecorino romano", "Pepe nero"],
+    "descrizioneBreve": "Un primo romano semplicissimo, ma dal gusto intenso, con solo tre ingredienti.",
+    "procedimento": "Cuocere gli spaghetti al dente. Tostare il pepe in padella e unire un mestolo di acqua di cottura. Scolare la pasta e mantecarla con pecorino grattugiato e l’acqua di cottura per ottenere una crema. Servire subito.",
+    "preferita": true,
+    "immagine": "cacio_pepe.png",
+    "categoria": "Primi piatti"
+  },
+  {
+    "id": 14,
+    "nome": "Cannoli siciliani",
+    "ingredienti": ["Farina", "Zucchero", "Strutto", "Marsala", "Ricotta di pecora", "Zucchero a velo", "Canditi"],
+    "descrizioneBreve": "Un dolce tipico siciliano con croccante cialda ripiena di ricotta dolce e canditi.",
+    "procedimento": "Preparare l’impasto per le cialde con farina, zucchero, strutto e marsala. Stendere e friggere fino a doratura. Preparare la crema con ricotta e zucchero a velo. Riempire le cialde fredde e decorare con canditi o gocce di cioccolato.",
+    "preferita": true,
+    "immagine": "cannoli.png",
+    "categoria": "Dolci"
+  },
+  {
+    "id": 15,
+    "nome": "Frittata di zucchine",
+    "ingredienti": ["Zucchine", "Uova", "Parmigiano Reggiano", "Sale", "Olio"],
+    "descrizioneBreve": "Un secondo piatto veloce e gustoso, perfetto sia caldo che freddo.",
+    "procedimento": "Tagliare le zucchine a rondelle e cuocerle in padella con poco olio. Sbattere le uova con parmigiano e sale. Aggiungere le zucchine e cuocere la frittata in padella fino a doratura su entrambi i lati.",
+    "preferita": false,
+    "immagine": "frittata_zucchine.png",
+    "categoria": "Secondi piatti"
+  }
+],
+  "comments": [
     {
-        "id": 1,
-        "nome": "Risotto zucchine e menta",
-        "ingredienti" : "Riso",
-        "preparazione": "cuocere il riso"
+      "id": 1,
+      "autore": "Luca",
+      "testo": "Ottima ricetta, semplice ma sempre di effetto!",
+      "recipeId": 1
     },
     {
-        "id": 2,
-        "nome": "Pasta al tonno",
-        "ingredienti" : "Pasta",
-        "preparazione": "cuocere la pasta"
+      "id": 2,
+      "autore": "Maria",
+      "testo": "Io aggiungo sempre un po' di origano fresco alla bruschetta, ci sta benissimo.",
+      "recipeId": 1
     },
     {
-        "id": 3,
-        "nome": "Seuppa",
-        "ingredienti" : "Pane",
-        "preparazione": "cuocere il pane"
+      "id": 3,
+      "autore": "Giovanni",
+      "testo": "La carbonara viene buonissima! Attenzione a non far cuocere troppo le uova.",
+      "recipeId": 2
+    },
+    {
+      "id": 4,
+      "autore": "Chiara",
+      "testo": "Io preferisco usare metà pecorino e metà parmigiano, rende il gusto più equilibrato.",
+      "recipeId": 2
+    },
+    {
+      "id": 5,
+      "autore": "Francesca",
+      "testo": "Risotto delicato ma molto gustoso, lo preparo spesso nelle cene con amici.",
+      "recipeId": 3
+    },
+    {
+      "id": 6,
+      "autore": "Paolo",
+      "testo": "Aggiungo sempre un po' di midollo come vuole la tradizione milanese.",
+      "recipeId": 3
+    },
+    {
+      "id": 7,
+      "autore": "Elena",
+      "testo": "Le lasagne sono venute perfette! Ho solo aumentato la besciamella.",
+      "recipeId": 4
+    },
+    {
+      "id": 8,
+      "autore": "Davide",
+      "testo": "Un classico della domenica in famiglia, approvato da tutti!",
+      "recipeId": 4
+    },
+    {
+      "id": 9,
+      "autore": "Simone",
+      "testo": "La parmigiana è fantastica, consiglio di grigliare le melanzane invece di friggerle.",
+      "recipeId": 5
+    },
+    {
+      "id": 10,
+      "autore": "Silvia",
+      "testo": "Ho seguito la ricetta e il risultato è stato eccezionale, tutti hanno fatto il bis.",
+      "recipeId": 5
+    },
+    {
+      "id": 11,
+      "autore": "Roberto",
+      "testo": "La pizza è venuta molto buona, anche con forno tradizionale.",
+      "recipeId": 6
+    },
+    {
+      "id": 12,
+      "autore": "Alessia",
+      "testo": "Impasto soffice e leggero, sembra quasi quella della pizzeria!",
+      "recipeId": 6
+    },
+    {
+      "id": 13,
+      "autore": "Marco",
+      "testo": "L’ossobuco ha un sapore incredibile, la gremolata fa la differenza.",
+      "recipeId": 7
+    },
+    {
+      "id": 14,
+      "autore": "Valentina",
+      "testo": "L’ho servito con risotto alla milanese, abbinamento perfetto.",
+      "recipeId": 7
+    },
+    {
+      "id": 15,
+      "autore": "Claudia",
+      "testo": "Il tiramisù è stato un successo, dolce fresco e goloso.",
+      "recipeId": 8
+    },
+    {
+      "id": 16,
+      "autore": "Andrea",
+      "testo": "Ho usato biscotti diversi dai savoiardi ed è venuto comunque buonissimo.",
+      "recipeId": 8
+    },
+    {
+      "id": 17,
+      "autore": "Giulia",
+      "testo": "La panna cotta è delicatissima, ho aggiunto una salsa ai lamponi.",
+      "recipeId": 9
+    },
+    {
+      "id": 18,
+      "autore": "Stefano",
+      "testo": "Semplice da preparare e di grande effetto, approvata dai bambini.",
+      "recipeId": 9
+    },
+    {
+      "id": 19,
+      "autore": "Marta",
+      "testo": "Gli arancini sono una bomba! Croccanti fuori e morbidi dentro.",
+      "recipeId": 10
+    },
+    {
+      "id": 20,
+      "autore": "Enrico",
+      "testo": "Un po’ laboriosi ma ne vale la pena, sapore autentico siciliano.",
+      "recipeId": 10
+    },
+    {
+      "id": 21,
+      "autore": "Sofia",
+      "testo": "La polenta concia è super filante, ottima nelle giornate fredde.",
+      "recipeId": 11
+    },
+    {
+      "id": 22,
+      "autore": "Matteo",
+      "testo": "Consiglio di usare fontina valdostana originale, cambia tutto.",
+      "recipeId": 11
+    },
+    {
+      "id": 23,
+      "autore": "Irene",
+      "testo": "Il vitello tonnato è delicato e cremoso, ho fatto un figurone.",
+      "recipeId": 12
+    },
+    {
+      "id": 24,
+      "autore": "Carlo",
+      "testo": "La salsa tonnata fatta in casa è molto più buona di quella pronta.",
+      "recipeId": 12
     }
-]
+  ]
 }
+

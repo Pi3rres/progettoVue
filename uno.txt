@@ -1,1 +1,8 @@
-ciao ciao
+npx json-server --watch data.json --port 3000
+
+
+git add -A
+
+git commit -m "messaggio"
+
+git push origin main
