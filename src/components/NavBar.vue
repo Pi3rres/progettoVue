@@ -24,15 +24,27 @@
               >Ricette</router-link
             >
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link text-white" :to="{ name: 'profilo' }"
-              >Profilo</router-link
-            >
-          </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center px-2 text-white">|</li>
+          <li v-if="$store.getters.isLoggedIn" class="nav-item">
             <router-link class="nav-link text-white" :to="{ name: 'editor' }"
               >Editor</router-link
             >
+          </li>
+          <li v-if="$store.getters.isLoggedIn" class="nav-item">
+            <router-link class="nav-link text-white" :to="{ name: 'profilo' }"
+              >Profilo ({{ $store.state.currentUser.username }})</router-link
+            >
+          </li>
+          <li class="nav-item d-flex align-items-center px-2 text-white">|</li>
+          <li v-if="!$store.getters.isLoggedIn" class="nav-item">
+            <router-link class="nav-link text-white" :to="{ name: 'login' }">
+              Login
+            </router-link>
+          </li>
+          <li v-else class="nav-item">
+            <a href="#" class="nav-link text-white" @click.prevent="logout">
+              Logout
+            </a>
           </li>
         </ul>
       </div>
@@ -40,5 +52,12 @@
   </nav>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.push({ name: "home" }); // torna alla home dopo logout
+    },
+  },
+};
 </script>

@@ -20,11 +20,20 @@ npm run build
 npm run lint
 ```
 
-### Run json server
+### Run json-server
 ```
-npx json-server --watch data.json --port 3000
+json-server --watch data.json --port 3000
 ```
 
+### Run json-server with script
+```
+npm run back
+```
+
+### Run json-server and "serve" - single script
+```
+npm run test
+```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

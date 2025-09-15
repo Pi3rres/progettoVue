@@ -19,8 +19,11 @@
     <!-- footer sempre in fondo, NON linkato -->
     <div class="card-footer d-flex justify-content-between align-items-center">
       <span class="badge bg-primary">{{ ricetta.categoria }}</span>
-      <span v-if="ricetta.preferita" class="badge bg-warning text-dark">
-        ♥ Preferita
+      <span
+        v-if="$store.getters.isPreferita(ricetta.id)"
+        class="badge bg-warning text-dark"
+      >
+        ❤️ Preferita
       </span>
     </div>
   </div>

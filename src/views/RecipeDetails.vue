@@ -8,7 +8,19 @@
         </div>
 
         <!-- Titolo -->
-        <h2 class="mb-4">{{ ricetta.nome }}</h2>
+        <div class="d-flex align-items-center justify-content-between mt-2">
+          <h2 class="mb-0">{{ ricetta.nome }}</h2>
+
+          <!-- Bottone preferita -->
+          <button
+            v-if="$store.getters.isLoggedIn"
+            @click="togglePreferita"
+            class="btn btn-sm btn-outline-danger"
+          >
+            <span v-if="isPreferita">Preferita ❤️</span>
+            <span v-else>Aggiungi alle preferite🤍</span>
+          </button>
+        </div>
 
         <!-- Layout immagine + descrizione -->
         <div class="row g-4 align-items-start">
@@ -33,11 +45,6 @@
                 {{ ingrediente }}
               </li>
             </ul>
-
-            <!-- Preferita -->
-            <div class="mt-3" v-if="ricetta.preferita">
-              <span class="badge bg-warning text-dark">★ Preferita</span>
-            </div>
           </div>
         </div>
 
@@ -89,6 +96,19 @@ export default {
     },
     commenti() {
       return this.$store.getters.commenti.filter((c) => c.recipeId == this.id);
+    },
+    isPreferita() {
+      return this.$store.getters.isPreferita(Number(this.id));
+    },
+  },
+  methods: {
+    togglePreferita() {
+      const idNum = Number(this.id);
+      if (this.isPreferita) {
+        this.$store.dispatch("removePreferita", idNum);
+      } else {
+        this.$store.dispatch("addPreferita", idNum);
+      }
     },
   },
   created() {
