@@ -35,10 +35,15 @@
               >Profilo ({{ $store.state.currentUser.username }})</router-link
             >
           </li>
-          <li class="nav-item d-flex align-items-center px-2 text-white">|</li>
+          <li
+            v-if="$store.getters.isLoggedIn"
+            class="nav-item d-flex align-items-center px-2 text-white"
+          >
+            |
+          </li>
           <li v-if="!$store.getters.isLoggedIn" class="nav-item">
             <router-link class="nav-link text-white" :to="{ name: 'login' }">
-              Login
+              Accedi
             </router-link>
           </li>
           <li v-else class="nav-item">
@@ -55,8 +60,8 @@
 export default {
   methods: {
     logout() {
+      this.$router.push({ name: "home" });
       this.$store.dispatch("logout");
-      this.$router.push({ name: "home" }); // torna alla home dopo logout
     },
   },
 };

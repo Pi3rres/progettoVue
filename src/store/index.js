@@ -5,6 +5,7 @@ export default createStore({
   state: {
     ricette: [],
     commenti: [],
+    users: [],
     currentUser: JSON.parse(localStorage.getItem("currentUser")) || null,
   },
   getters: {
@@ -15,7 +16,7 @@ export default createStore({
     isLoggedIn: (state) => !!state.currentUser,
     isPreferita: (state) => (recipeId) => {
       if (!state.currentUser) return false;
-      return state.currentUser.preferiti.includes(Number(recipeId));
+      return state.currentUser.preferiti.includes(String(recipeId));
     },
   },
   mutations: {
@@ -36,21 +37,28 @@ export default createStore({
       state.currentUser = null;
       localStorage.removeItem("currentUser");
     },
+    ADD_USER(state, user) {
+      state.users.push(user);
+    },
     ADD_PREFERITA(state, recipeId) {
       if (!state.currentUser) return;
-      const idNum = Number(recipeId);
-      if (!state.currentUser.preferiti.includes(idNum)) {
-        state.currentUser.preferiti.push(idNum);
+      if (!state.currentUser.preferiti.includes(recipeId)) {
+        state.currentUser.preferiti.push(recipeId);
         localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
       }
     },
     REMOVE_PREFERITA(state, recipeId) {
       if (!state.currentUser) return;
-      const idNum = Number(recipeId);
       state.currentUser.preferiti = state.currentUser.preferiti.filter(
-        (id) => id !== idNum
+        (id) => id !== recipeId
       );
       localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
+    },
+    ADD_COMMENTO(state, commento) {
+      state.commenti.push(commento);
+    },
+    ADD_RECIPE(state, recipe) {
+      state.ricette.push(recipe);
     },
   },
   actions: {
@@ -72,7 +80,12 @@ export default createStore({
       );
       if (res.data.length > 0) {
         const user = res.data[0];
-        commit("SET_USER", { id: user.id, username: user.username }); // NO password
+        commit("SET_USER", {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          preferiti: user.preferiti || [],
+        });
       } else {
         throw new Error("Credenziali errate");
       }
@@ -80,26 +93,104 @@ export default createStore({
     logout({ commit }) {
       commit("LOGOUT");
     },
-    async addPreferita({ commit, state }, recipeId) {
-      const idNum = Number(recipeId);
-      if (!state.currentUser.preferiti.includes(idNum)) {
-        commit("ADD_PREFERITA", idNum);
-        const userId = Number(state.currentUser.id);
-        await axios.patch(`http://localhost:3000/users/${userId}`, {
-          preferiti: state.currentUser.preferiti,
-        });
+    async register({ commit, state }, { username, email, password }) {
+      // controllo se l’email è già usata
+      const exists = state.users.find((u) => u.email === email);
+      if (exists) {
+        throw new Error("Email già registrata");
       }
+
+      const newUser = {
+        id: String(Date.now()),
+        username,
+        email,
+        password,
+        preferiti: [],
+      };
+
+      const res = await axios.post("http://localhost:3000/users", newUser);
+      commit("ADD_USER", res.data);
+      commit("SET_USER", res.data);
+      return true;
     },
 
-    async removePreferita({ commit, state }, recipeId) {
-      const idNum = Number(recipeId);
-      if (state.currentUser.preferiti.includes(idNum)) {
-        commit("REMOVE_PREFERITA", idNum);
-        const userId = Number(state.currentUser.id);
-        await axios.patch(`http://localhost:3000/users/${userId}`, {
-          preferiti: state.currentUser.preferiti,
-        });
+    async addPreferita({ commit, state }, recipeId) {
+      if (!state.currentUser.preferiti.includes(recipeId)) {
+        commit("ADD_PREFERITA", recipeId);
+        await axios.patch(
+          `http://localhost:3000/users/${state.currentUser.id}`,
+          {
+            preferiti: state.currentUser.preferiti,
+          }
+        );
       }
+    },
+    async removePreferita({ commit, state }, recipeId) {
+      if (state.currentUser.preferiti.includes(recipeId)) {
+        commit("REMOVE_PREFERITA", recipeId);
+        await axios.patch(
+          `http://localhost:3000/users/${state.currentUser.id}`,
+          {
+            preferiti: state.currentUser.preferiti,
+          }
+        );
+      }
+    },
+    async addCommento({ commit }, commento) {
+      const nuovoCommento = {
+        ...commento,
+        id: String(Date.now()),
+        userId: String(commento.userId),
+        recipeId: String(commento.recipeId),
+      };
+      const res = await axios.post(
+        "http://localhost:3000/comments",
+        nuovoCommento
+      );
+      commit("ADD_COMMENTO", res.data);
+    },
+    async addRecipe({ commit, state }, recipe) {
+      if (!state.currentUser) {
+        throw new Error("Devi essere loggato per inserire una ricetta");
+      }
+
+      const nuovaRicetta = {
+        ...recipe,
+        id: String(Date.now()),
+        authorId: state.currentUser.id,
+      };
+
+      const res = await axios.post(
+        "http://localhost:3000/recipes",
+        nuovaRicetta
+      );
+      commit("ADD_RECIPE", res.data);
+      return res.data;
+    },
+    async eliminaRicetta({ commit, state }, recipeId) {
+      const ricetta = state.ricette.find((r) => r.id === recipeId);
+      if (!ricetta) throw new Error("Ricetta non trovata");
+      if (ricetta.authorId !== state.currentUser?.id) {
+        throw new Error("Non sei autorizzato a eliminare questa ricetta");
+      }
+
+      const commentiDaEliminare = state.commenti.filter(
+        (c) => c.recipeId === recipeId
+      );
+      for (const c of commentiDaEliminare) {
+        await axios.delete(`http://localhost:3000/comments/${c.id}`);
+      }
+
+      await axios.delete(`http://localhost:3000/recipes/${recipeId}`);
+
+      commit(
+        "SET_COMMENTS",
+        state.commenti.filter((c) => c.recipeId !== recipeId)
+      );
+      commit(
+        "SET_RECIPES",
+        state.ricette.filter((r) => r.id !== recipeId)
+      );
     },
   },
   modules: {},

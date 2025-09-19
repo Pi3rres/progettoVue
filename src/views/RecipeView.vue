@@ -26,7 +26,15 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("loadRecipes");
+    if (!this.$store.getters.ricette.length) {
+      this.$store.dispatch("loadRecipes");
+    }
+    if (!this.$store.getters.commenti.length) {
+      this.$store.dispatch("loadComments");
+    }
+    if (!this.$store.getters.users.length) {
+      this.$store.dispatch("loadUsers");
+    }
   },
 };
 </script>

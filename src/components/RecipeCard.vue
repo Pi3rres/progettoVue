@@ -21,7 +21,7 @@
       <span class="badge bg-primary">{{ ricetta.categoria }}</span>
       <span
         v-if="$store.getters.isPreferita(ricetta.id)"
-        class="badge bg-warning text-dark"
+        class="badge bg-danger text-white"
       >
         ❤️ Preferita
       </span>
