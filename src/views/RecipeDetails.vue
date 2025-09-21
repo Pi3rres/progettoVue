@@ -24,6 +24,13 @@
               <span v-if="isPreferita">Preferita ❤️</span>
               <span v-else>Aggiungi alle preferite🤍</span>
             </button>
+            <router-link
+              v-if="ricetta.authorId === $store.getters.currentUser?.id"
+              :to="{ name: 'editor', params: { id: ricetta.id } }"
+              class="btn btn-sm btn-outline-primary"
+            >
+              Modifica ✏️
+            </router-link>
             <button
               v-if="ricetta.authorId === $store.getters.currentUser?.id"
               @click="eliminaRicetta"

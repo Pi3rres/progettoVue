@@ -60,6 +60,12 @@ export default createStore({
     ADD_RECIPE(state, recipe) {
       state.ricette.push(recipe);
     },
+    UPDATE_RECIPE(state, updatedRecipe) {
+      const index = state.ricette.findIndex((r) => r.id === updatedRecipe.id);
+      if (index !== -1) {
+        state.ricette.splice(index, 1, updatedRecipe);
+      }
+    },
   },
   actions: {
     async loadRecipes({ commit }) {
@@ -191,6 +197,22 @@ export default createStore({
         "SET_RECIPES",
         state.ricette.filter((r) => r.id !== recipeId)
       );
+    },
+    async updateRicetta({ commit, state }, recipe) {
+      const r = state.ricette.find((r) => r.id === recipe.id);
+      if (!r) throw new Error("Ricetta non trovata");
+      if (String(r.authorId) !== String(state.currentUser?.id)) {
+        throw new Error("Non puoi modificare le ricette di altri utenti");
+      }
+
+      // Aggiorna solo i campi passati
+      const res = await axios.patch(
+        `http://localhost:3000/recipes/${recipe.id}`,
+        recipe
+      );
+
+      commit("UPDATE_RECIPE", res.data);
+      return res.data;
     },
   },
   modules: {},
