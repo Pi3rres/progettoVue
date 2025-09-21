@@ -7,11 +7,15 @@ L'idea è di un piccolo sito che ospita ricette condivise tra gli utenti.
 Gli utenti registrati possono inserire nuove ricette e commentare quelle presenti, oltre a salvare una selezione di ricette preferite.
 
 Il progetto è stato sviluppato tramite il framework Vue.js
-La parte di backend è simulata tramite JSON Server
+La parte di backend è simulata tramite [JSON Server](https://www.npmjs.com/package/json-server/v/0.17.4)
 
-## Download, installazione e 
+## Download, installazione e compilazione
 
-Richiede Git e Node.js
+### Requisiti
+
+Richiede [Git](https://git-scm.com/) e [Node.js](https://nodejs.org/en)
+
+### Download e installazione
 
 Per clonare il repository, da console:
 ```
@@ -29,7 +33,7 @@ Per testare il progetto occorre far partire sia il backend simulato:
 ```
 npm run back
 ```
-sia l'applicazione in frontend.
+sia l'applicazione in frontend:
 ```
 npm run serve
 ```
