@@ -15,8 +15,8 @@
         <select v-model="form.categoria" class="form-select" required>
           <option disabled value="">Seleziona una categoria</option>
           <option>Antipasti</option>
-          <option>Primi</option>
-          <option>Secondi</option>
+          <option>Primi piatti</option>
+          <option>Secondi piatti</option>
           <option>Dolci</option>
         </select>
       </div>
