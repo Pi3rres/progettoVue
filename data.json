@@ -398,8 +398,8 @@
   "users": [
     {
       "id": "1",
-      "email": "luca@example.com",
-      "password": "luca123",
+      "email": "luca@mail.com",
+      "password": "luca_123",
       "username": "Luca",
       "preferiti": [
         "1",
@@ -409,8 +409,8 @@
     },
     {
       "id": "2",
-      "email": "marta@example.com",
-      "password": "marta123",
+      "email": "marta@mail.com",
+      "password": "marta_123",
       "username": "Marta",
       "preferiti": [
         "2",
@@ -419,8 +419,8 @@
     },
     {
       "id": "3",
-      "email": "giovanni@example.com",
-      "password": "giovanni123",
+      "email": "giovanni@mail.com",
+      "password": "giovanni_123",
       "username": "Giovanni",
       "preferiti": [
         "6",
@@ -431,8 +431,8 @@
     },
     {
       "id": "4",
-      "email": "anna@example.com",
-      "password": "anna123",
+      "email": "anna@mail.com",
+      "password": "anna_123",
       "username": "Anna",
       "preferiti": [
         "1",
@@ -442,8 +442,8 @@
     },
     {
       "id": "5",
-      "email": "marco@example.com",
-      "password": "marco123",
+      "email": "marco@mail.com",
+      "password": "marco_123",
       "username": "Marco",
       "preferiti": [
         "9",
