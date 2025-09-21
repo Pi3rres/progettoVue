@@ -205,7 +205,6 @@ export default createStore({
         throw new Error("Non puoi modificare le ricette di altri utenti");
       }
 
-      // Aggiorna solo i campi passati
       const res = await axios.patch(
         `http://localhost:3000/recipes/${recipe.id}`,
         recipe

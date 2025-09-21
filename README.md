@@ -22,9 +22,16 @@ Per clonare il repository, da console:
 git clone https://github.com/Pi3rres/progettoVue.git
 ```
 
-Successivamente installare le dipendenze:
+Successivamente nella cartella "progettoVue" installare le dipendenze:
 ```
 npm install
+```
+> [!WARNING]
+> Ci possono essere problemi tra le differenti versioni windows o unix/macOs relativi ai fine linea LF e CR.
+
+Dopo l'intallazione, per risolvere problemi di formattazione, eseguire:
+```
+npm run lint -- --fix
 ```
 
 ### :popcorn: Ambiente di test
