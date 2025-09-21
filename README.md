@@ -1,6 +1,6 @@
-# Appunti di cucina
+# :man_cook: Appunti di cucina :woman_cook:
 
-## Il progetto
+## :cake: Il progetto
 
 Questo progetto è stato sviluppato per l'esame finale del corso "Progettazione e sviluppo di applicazioni web per dispostivi mobili".
 L'idea è di un piccolo sito che ospita ricette condivise tra gli utenti. 
@@ -9,13 +9,13 @@ Gli utenti registrati possono inserire nuove ricette e commentare quelle present
 Il progetto è stato sviluppato tramite il framework Vue.js
 La parte di backend è simulata tramite [JSON Server](https://www.npmjs.com/package/json-server/v/0.17.4)
 
-## Download, installazione e compilazione
+## 	:spaghetti: Download, installazione e compilazione
 
-### Requisiti
+### :jar: Requisiti
 
 Richiede [Git](https://git-scm.com/) e [Node.js](https://nodejs.org/en)
 
-### Download e installazione
+### :hamburger: Download e installazione
 
 Per clonare il repository, da console:
 ```
@@ -27,7 +27,7 @@ Successivamente installare le dipendenze:
 npm install
 ```
 
-### Ambiente di test
+### :popcorn: Ambiente di test
 
 Per testare il progetto occorre far partire sia il backend simulato:
 ```
@@ -45,7 +45,7 @@ npm run test
 
 
 
-### Compilare per produzione
+### :canned_food: Compilare per produzione
 Per generare i file per il progetto in produzione:
 ```
 npm run build
