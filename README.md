@@ -9,6 +9,8 @@ Gli utenti registrati possono inserire nuove ricette e commentare quelle present
 Il progetto è stato sviluppato tramite il framework Vue.js
 La parte di backend è simulata tramite [JSON Server](https://www.npmjs.com/package/json-server/v/0.17.4)
 
+Per la descrizione più dettagliata del progetto fare riferimento alla [Relazione relativa al progetto](ProgettoEsame.Dalbard.pdf)
+
 ## 	:spaghetti: Download, installazione e compilazione
 
 ### :jar: Requisiti
