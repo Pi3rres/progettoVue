@@ -247,6 +247,20 @@
       "immagine": "frittata_zucchine.png",
       "categoria": "Secondi piatti",
       "authorId": "1"
+    },
+    {
+      "id": "1758719158861",
+      "nome": "Tartina alle acciughe",
+      "categoria": "Antipasti",
+      "immagine": "tartina_acciughe.jpg",
+      "descrizioneBreve": "Una deliziosa tartina, dove la delicatezza del burro incontra la sapidità delle acciughe",
+      "procedimento": "Tagliare il pane a fette sottili e tostare leggermente. Spalmare il burro ed adagiare un filetto di acciuga.",
+      "ingredienti": [
+        "Pane integrale",
+        "Burro",
+        "Filetti di acciughe"
+      ],
+      "authorId": "1"
     }
   ],
   "comments": [

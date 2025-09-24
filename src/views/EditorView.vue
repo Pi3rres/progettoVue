@@ -39,6 +39,13 @@
             placeholder="es: pasta.jpg"
           />
         </div>
+        <div v-if="uploadEnabled" class="mb-3">
+          <label class="form-label">Carica immagine</label>
+          <input type="file" class="form-control" @change="handleFileChange" />
+          <small class="text-muted">
+            Verrà salvata come: {{ form.immagine }}
+          </small>
+        </div>
 
         <!-- Descrizione breve -->
         <div class="col-12">
@@ -117,11 +124,16 @@ export default {
         procedimento: "",
         ingredienti: [""],
       },
+
+      file: null, // il file da caricare
     };
   },
   computed: {
     isEditing() {
       return !!this.$route.params.id;
+    },
+    uploadEnabled() {
+      return this.$store.getters.uploadEnabled;
     },
     ricettaEsistente() {
       return this.$store.getters.ricette.find(
@@ -135,6 +147,9 @@ export default {
     },
     rimuoviIngrediente(i) {
       this.form.ingredienti.splice(i, 1);
+    },
+    handleFileChange(e) {
+      this.file = e.target.files[0];
     },
     async salvaRicetta() {
       if (!this.$store.getters.currentUser) {
@@ -158,7 +173,10 @@ export default {
             ...updatedFields,
           });
         } else {
-          await this.$store.dispatch("addRecipe", this.form);
+          await this.$store.dispatch("addRecipe", {
+            recipe: this.form,
+            file: this.file,
+          });
         }
         this.$router.push({ name: "profilo" });
       } catch (error) {
@@ -171,6 +189,7 @@ export default {
     if (!this.$store.getters.ricette.length) {
       await this.$store.dispatch("loadRecipes");
     }
+    await this.$store.dispatch("checkBackend");
 
     if (this.isEditing) {
       const r = this.$store.getters.ricette.find(

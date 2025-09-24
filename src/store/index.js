@@ -7,6 +7,7 @@ export default createStore({
     commenti: [],
     users: [],
     currentUser: JSON.parse(localStorage.getItem("currentUser")) || null,
+    uploadEnabled: false, // di default disabilitato
   },
   getters: {
     ricette: (state) => state.ricette,
@@ -18,6 +19,7 @@ export default createStore({
       if (!state.currentUser) return false;
       return state.currentUser.preferiti.includes(String(recipeId));
     },
+    uploadEnabled: (state) => state.uploadEnabled,
   },
   mutations: {
     SET_RECIPES(state, recipes) {
@@ -65,6 +67,9 @@ export default createStore({
       if (index !== -1) {
         state.ricette.splice(index, 1, updatedRecipe);
       }
+    },
+    SET_UPLOAD_ENABLED(state, val) {
+      state.uploadEnabled = val;
     },
   },
   actions: {
@@ -155,13 +160,42 @@ export default createStore({
       );
       commit("ADD_COMMENTO", res.data);
     },
-    async addRecipe({ commit, state }, recipe) {
+    async checkBackend({ commit }) {
+      try {
+        await axios.get("http://localhost:3001/ping");
+        commit("SET_UPLOAD_ENABLED", true);
+      } catch (e) {
+        commit("SET_UPLOAD_ENABLED", false);
+      }
+    },
+    async uploadImage(_, file) {
+      const formData = new FormData();
+      formData.append("image", file);
+      const res = await axios.post("http://localhost:3001/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      return res.data.filename; // es: "pasta.jpg"
+    },
+    async addRecipe({ commit, state }, { recipe, file }) {
       if (!state.currentUser) {
         throw new Error("Devi essere loggato per inserire una ricetta");
       }
 
+      let imageName = recipe.immagine;
+
+      if (state.uploadEnabled && file) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("filename", imageName); // passiamo il nome scelto
+
+        await axios.post("http://localhost:3001/upload", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      }
+
       const nuovaRicetta = {
         ...recipe,
+        immagine: imageName,
         id: String(Date.now()),
         authorId: state.currentUser.id,
       };
