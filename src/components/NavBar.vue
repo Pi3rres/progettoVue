@@ -24,7 +24,11 @@
               >Ricette</router-link
             >
           </li>
-          <li class="nav-item d-flex align-items-center px-2 text-white">|</li>
+          <li
+            class="d-none d-md-inline-flex nav-item d-flex align-items-center px-2 text-white"
+          >
+            |
+          </li>
           <li v-if="$store.getters.isLoggedIn" class="nav-item">
             <router-link class="nav-link text-white" :to="{ name: 'editor' }"
               >Editor</router-link
@@ -37,7 +41,7 @@
           </li>
           <li
             v-if="$store.getters.isLoggedIn"
-            class="nav-item d-flex align-items-center px-2 text-white"
+            class="d-none d-md-inline-flex nav-item d-flex align-items-center px-2 text-white"
           >
             |
           </li>
