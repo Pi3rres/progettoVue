@@ -34,11 +34,12 @@
         />
       </div>
     </div>
+    <!-- Griglia -->
     <div
       class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 gy-md-4"
     >
       <div
-        v-for="ricetta in ricetteFiltrate"
+        v-for="ricetta in ricetteMostrate"
         :key="ricetta.id"
         class="col d-flex mb-4"
       >
@@ -51,6 +52,52 @@
       <p class="text-muted">
         Nessuna ricetta trovata per le categorie selezionate.
       </p>
+    </div>
+    <!-- Paginazione (desktop/tablet) -->
+    <nav v-else-if="!isMobile" class="d-flex justify-content-center mt-4">
+      <ul class="pagination">
+        <li class="page-item" :class="{ disabled: paginaCorrente === 1 }">
+          <button
+            class="page-link"
+            @click="paginaCorrente--"
+            :disabled="paginaCorrente === 1"
+          >
+            &laquo;
+          </button>
+        </li>
+        <li
+          v-for="n in totalePagine"
+          :key="n"
+          class="page-item"
+          :class="{ active: paginaCorrente === n }"
+        >
+          <button class="page-link" @click="paginaCorrente = n">{{ n }}</button>
+        </li>
+        <li
+          class="page-item"
+          :class="{ disabled: paginaCorrente === totalePagine }"
+        >
+          <button
+            class="page-link"
+            @click="paginaCorrente++"
+            :disabled="paginaCorrente === totalePagine"
+          >
+            &raquo;
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Carica altri (solo mobile) -->
+    <div v-else class="text-center mt-4">
+      <button
+        v-if="ricetteMostrate.length < ricetteFiltrate.length"
+        class="btn btn-outline-primary"
+        @click="caricaAltri"
+      >
+        Carica altri
+      </button>
+      <p v-else class="text-muted small">Hai visto tutte le ricette 🎉</p>
     </div>
   </div>
 </template>
@@ -67,6 +114,11 @@ export default {
       categorie: ["Antipasti", "Primi piatti", "Secondi piatti", "Dolci"],
       categorieSelezionate: [],
       stringaRicerca: "",
+      isMobile: false,
+      paginaCorrente: 1,
+      perPagina: 12, // desktop
+      visibiliMobile: 6, // inizialmente quante ricette caricare su mobile
+      incrementoMobile: 6, // quante caricarne ogni click
     };
   },
   computed: {
@@ -84,6 +136,35 @@ export default {
         return matchCategoria && matchNome;
       });
     },
+    totalePagine() {
+      return Math.ceil(this.ricetteFiltrate.length / this.perPagina);
+    },
+    ricettePaginazione() {
+      const start = (this.paginaCorrente - 1) * this.perPagina;
+      const end = start + this.perPagina;
+      return this.ricetteFiltrate.slice(start, end);
+    },
+    ricetteMostrate() {
+      if (!this.isMobile) {
+        return this.ricettePaginazione;
+      }
+      return this.ricetteFiltrate.slice(0, this.visibiliMobile);
+    },
+  },
+  methods: {
+    checkMobile() {
+      this.isMobile = window.matchMedia("(max-width: 767px)").matches;
+    },
+
+    caricaAltri() {
+      this.visibiliMobile += this.incrementoMobile;
+    },
+  },
+  watch: {
+    ricetteFiltrate() {
+      this.paginaCorrente = 1;
+      this.visibiliMobile = this.incrementoMobile; // reset su mobile
+    },
   },
   created() {
     if (!this.$store.getters.ricette.length) {
@@ -95,6 +176,13 @@ export default {
     if (!this.$store.getters.users.length) {
       this.$store.dispatch("loadUsers");
     }
+  },
+  mounted() {
+    this.checkMobile();
+    window.addEventListener("resize", this.checkMobile);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkMobile);
   },
 };
 </script>
