@@ -25,7 +25,7 @@
             >
           </li>
           <li
-            class="d-none d-md-inline-flex nav-item d-flex align-items-center px-2 text-white"
+            class="d-none d-lg-inline-flex nav-item d-flex align-items-center px-2 text-white"
           >
             |
           </li>
@@ -41,7 +41,7 @@
           </li>
           <li
             v-if="$store.getters.isLoggedIn"
-            class="d-none d-md-inline-flex nav-item d-flex align-items-center px-2 text-white"
+            class="d-none d-lg-inline-flex nav-item d-flex align-items-center px-2 text-white"
           >
             |
           </li>
