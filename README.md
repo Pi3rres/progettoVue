@@ -52,7 +52,14 @@ In alternativa è possibile lanciare entrambi gli elementi da un unico terminale
 npm run test
 ```
 
+### :hot_pepper: Backend per upload immagini
 
+Per permettere all'editor di caricare immagini è stato realizzato un piccolo componente backend.
+Si può scaricare dal [Repository GitHub dedicato](https://github.com/Pi3rres/progettoBack)
+
+Sia questo progetto che il progetto backend si devono trovare nella stessa cartella. Il backend convive con il backend simulato json-server, si occupa esclusivamente dell'upload delle immagini utilizzando una porta diversa (3001).
+> [!NOTE]
+> Il presente progetto è stato realizzato in modo da funzionare anche senza il suddetto backend, in tal caso semplicemente la funzione di upload file non sarà disponibile e verrà caricato esclusivamente il nome del file.
 
 ### :canned_food: Compilare per produzione
 Per generare i file per il progetto in produzione:
