@@ -14,8 +14,12 @@
       v-if="mieRicette.length > 0"
       class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 gy-md-4"
     >
-      <div v-for="ricetta in mieRicette" :key="ricetta.id" class="col">
-        <div style="max-width: 300px; width: 100%">
+      <div
+        v-for="ricetta in mieRicette"
+        :key="ricetta.id"
+        class="col d-flex mb-4"
+      >
+        <div class="flex-fill px-md-2" style="max-width: 300px; width: 100%">
           <RecipeCard :ricetta="ricetta" />
         </div>
       </div>
@@ -27,8 +31,12 @@
       v-if="preferite.length > 0"
       class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 gy-md-4"
     >
-      <div v-for="ricetta in preferite" :key="ricetta.id" class="col">
-        <div style="max-width: 300px; width: 100%">
+      <div
+        v-for="ricetta in preferite"
+        :key="ricetta.id"
+        class="col d-flex mb-4"
+      >
+        <div class="flex-fill px-md-2" style="max-width: 300px; width: 100%">
           <RecipeCard :ricetta="ricetta" />
         </div>
       </div>
